@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% block css_styles %}
+    <link rel="stylesheet" href="{% static 'app/css/styles_homepage.css' %}">
+  {% endblock %}
+  <title>Homepage</title>
+</head>
+<body>
+  <h1>Welcome to the Homepage</h1>
+
+  <h2>Products:</h2>
+  <ul>
+    {% for product in products %}
+      <li>
+        <p><strong>Name:</strong> {{ product.name }}</p>
+        <p><a href="{% url 'product_detail' product_id=product.pk %}">View Product</a></p>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h2>Customers:</h2>
+  <ul>
+    {% for customer in customers %}
+      <li>
+        <p><strong>Name:</strong> {{ customer.name }}</p>
+        <p><a href="{% url 'customer_detail' customer_id=customer.pk %}">View Customer</a></p>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h2>Carts:</h2>
+  <ul>
+    <!-- Loop through each cart -->
+    {% for cart in carts %}
+      <li>
+        <p><strong>Customer:</strong> {{ cart.customer.name }}</p>
+        <!-- Create a link to the cart_detail view for each customer -->
+        <p><a href="{% url 'cart_detail' cart_id=cart.pk %}">View Cart</a></p>
+        {% if cart_detail == cart.pk %}
+        <ul>
+          <!-- Loop through each product in the cart -->
+          {% for product in cart.products.all %}
+            <li>
+              <p><strong>Name:</strong> {{ product.name }}</p>
+              <p><strong>Price:</strong> ${{ product.price }}</p>
+              <p><strong>Description:</strong> {{ product.description }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

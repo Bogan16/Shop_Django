@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% block css_styles %}
+    <link rel="stylesheet" href="{% static 'app/css/styles_cart.css' %}">
+  {% endblock %}
+  <title>Shopping Cart</title>
+</head>
+<body>
+  <h1>Cart Details</h1>
+  <!-- <p><strong>Customer:</strong> {{ cart.customer.name }}</p> -->
+  <h2>Products:</h2>
+  <ul>
+    {% for product in products %}
+      <li>
+        <p><strong>{{ product.name }}</strong></p>
+        <p><strong>Price:</strong> ${{ product.price }}</p>
+        <p><strong>Description:</strong> {{ product.description }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

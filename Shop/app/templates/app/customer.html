@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% block css_styles %}
+    <link rel="stylesheet" href="{% static 'app/css/styles_customer.css' %}">
+  {% endblock %}
+  <title>Customer Details</title>
+</head>
+<body>
+  <h1>Customer Details</h1>
+  <p><strong>Email:</strong> {{ customer.email }}</p>
+</body>
+</html>
