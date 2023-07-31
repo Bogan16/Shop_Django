@@ -8,10 +8,12 @@
   {% endblock %}
   <title>Shopping Cart</title>
 </head>
+
 <body>
   <h1>Cart Details</h1>
   <!-- <p><strong>Customer:</strong> {{ cart.customer.name }}</p> -->
   <h2>Products:</h2>
+
   <ul>
     {% for product in products %}
       <li>
@@ -21,5 +23,6 @@
       </li>
     {% endfor %}
   </ul>
+  
 </body>
 </html>
