@@ -2,7 +2,7 @@ from django.shortcuts import render
 from app.models import Product, Customer, Cart
 
 def homepage(request):
-    cart_detail = request.GET.get('cart_id')
+    # cart_detail = request.GET.get('cart_id')
     carts = Cart.objects.prefetch_related('products').all()
     customers = Customer.objects.all()
     products = Product.objects.all()
